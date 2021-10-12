@@ -1,0 +1,56 @@
+<head>
+    <link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
+    </script>
+    <script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+    </script>
+</head>
+{% csrf_token %}
+{% if user.is_authenticated %}
+
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #E6AF2E;">
+    <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'createtodo' %}">Create</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'currenttodos' %}">Current</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'completedtodos' %}">Completed</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logoutuser' %}">Logout</a>
+            </li>
+        </ul>
+</nav>
+
+
+{% else %}
+
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #E6AF2E;">
+    <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'signupuser' %}">Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'loginuser' %}">Login</a>
+            </li>
+        </ul>
+</nav>
+
+
+{% endif %}
+<br>
+<br>
+
+
+{% block content %}{% endblock %}

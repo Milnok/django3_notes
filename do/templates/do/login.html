@@ -1,0 +1,32 @@
+{% extends 'do/base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm" align="center">
+        <div class="alert alert-success" role="alert">
+            Login
+        </div>
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div align="right">
+                <h6>Login:{{ Form.username }}</h6>
+                <h6>Password:{{ Form.password }}</h6>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Login</button>
+        </form>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+</div>
+{% endblock %}
